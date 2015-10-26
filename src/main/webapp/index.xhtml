@@ -1,0 +1,44 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui"  
+      xmlns:b="http://bootsfaces.net/ui"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Livros</title>
+    </h:head>
+    <h:body>
+        <h:form id="formulario">
+            <p:panel id="panelCadastro" header="Cadastro de Livros" footer="Alarcon" >
+                <h:panelGrid columns="2" id="gridCadastro">
+                    <h:outputText value="Título:"/>
+                    <p:inputText value="#{livroBean.livro.titulo}" size="40" />
+                    <h:outputText value="Autor:"/>
+                    <p:inputText value="#{livroBean.livro.autor}" size="15" />
+                    <h:outputText value="Ano:"/>
+                    <p:inputText value="#{livroBean.livro.ano}" size="10" />
+                </h:panelGrid>
+                <p:commandButton value="Salvar" actionListener="#{livroBean.salvar()}" update="@form" />                                
+            </p:panel>
+            <br/>
+            <p:panel id="listaLivros" header="Lista de Livros">
+                <p:dataTable id="tableLivros" value="#{livroBean.livros}" var="livro">
+                    <p:column headerText="ID">
+                        <h:outputText value="#{livro.id}" />
+                    </p:column>
+                    <p:column headerText="Título">
+                        <h:outputText value="#{livro.titulo}" />
+                    </p:column>
+                    <p:column headerText="Autor">
+                        <h:outputText value="#{livro.autor}" />
+                    </p:column>
+                    <p:column headerText="Ano">
+                        <h:outputText value="#{livro.ano}" />
+                    </p:column>
+                </p:dataTable>
+            </p:panel>
+        </h:form>
+    </h:body>
+</html>
+
